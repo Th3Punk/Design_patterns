@@ -59,9 +59,12 @@
   <ItemGroup>
     <Compile Include="AdapterExampleTests.cs" />
     <Compile Include="AddressDbDataAdapterRepositoryTests.cs" />
+    <Compile Include="MockDbAdapterTests.cs" />
+    <Compile Include="MockDbDataAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Design\ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
