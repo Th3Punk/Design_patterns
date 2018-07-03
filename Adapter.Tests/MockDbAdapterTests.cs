@@ -11,10 +11,23 @@ namespace Adapter.Tests
     public class MockDbAdapterTests
     {
         [TestMethod]
-        public void ShouldMockThrowIfArgumentNull()
+        public void ShouldMockThrowIfCtorArgumentNull()
         {
             //Arrage
-            var sut = new MockDbDataAdapter();
+            MockDbDataAdapter sut;
+
+            //Act
+            Action todo = () => sut = new MockDbDataAdapter(null);
+
+            //Asser
+            todo.Should().Throw<ArgumentNullException>();
+        }
+
+        [TestMethod]
+        public void ShouldMockThrowIfFillArgumentNull()
+        {
+            //Arrage
+            var sut = new MockDbDataAdapter(MockDataTableFactory.GetCreateDataTable());
 
             //Act
             Action todo = () => sut.Fill(null);
@@ -27,7 +40,7 @@ namespace Adapter.Tests
         public void MockShouldReturnedOneTable()
         {
             //Arrage
-            var sut = new MockDbDataAdapter();
+            var sut = new MockDbDataAdapter(MockDataTableFactory.GetCreateDataTable());
             var dataSet = new DataSet();
 
             //Act
@@ -41,7 +54,7 @@ namespace Adapter.Tests
         public void MockShouldReturnedData()
         {
             //Arrage
-            var sut = new MockDbDataAdapter();
+            var sut = new MockDbDataAdapter(MockDataTableFactory.GetCreateDataTable());
             var dataSet = new DataSet();
 
             //Act
@@ -51,9 +64,7 @@ namespace Adapter.Tests
             dataSet.Tables.Should().HaveCount(1, "Mert egy táblával kell visszatérni");
 
             var table = dataSet.Tables[0];
-            table.Rows.Should().HaveCount(1, "Mert a táblában kell lennie egy sornak");
-            table.Columns[GlobalStrings.TableColumnEMailAddress].Should().NotBeNull();
-            table.Rows[0][GlobalStrings.TableColumnEMailAddress].Should().Be(GlobalStrings.TestEmailAddress);
+            MockDataTableFactory.CheckDataTable(table);
         }
     }
 }

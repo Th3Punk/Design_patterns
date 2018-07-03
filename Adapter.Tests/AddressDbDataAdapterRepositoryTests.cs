@@ -27,7 +27,7 @@ namespace Adapter.Tests
         public void ShouldReturnedData()
         {
             //Arrage
-            var adapter = new MockDbDataAdapter();
+            var adapter = new MockDbDataAdapter(MockDataTableFactory.GetCreateDataTable());
             AddressDBDataAdapterRepository sut = new AddressDBDataAdapterRepository(adapter);
 
             //Act
