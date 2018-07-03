@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter_pattern", "Adapter_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter.Tests", "Adapter.Tests\Adapter.Tests.csproj", "{E3019B96-7BAF-4014-B931-B18C61E38F9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00Data", "00Data\00Data.csproj", "{EE33C5D7-74E4-472A-BADB-5D8E4C8F33AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E3019B96-7BAF-4014-B931-B18C61E38F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3019B96-7BAF-4014-B931-B18C61E38F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3019B96-7BAF-4014-B931-B18C61E38F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE33C5D7-74E4-472A-BADB-5D8E4C8F33AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE33C5D7-74E4-472A-BADB-5D8E4C8F33AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE33C5D7-74E4-472A-BADB-5D8E4C8F33AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE33C5D7-74E4-472A-BADB-5D8E4C8F33AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
