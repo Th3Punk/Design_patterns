@@ -9,7 +9,7 @@ namespace _00Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                "Server=./punkserver; Database=test; Trusted_Connection=True;"
+                @"Server=.\punkserver; Database=Addresses; Trusted_Connection=True;"
                 );
         }
 

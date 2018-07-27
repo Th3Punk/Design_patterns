@@ -4,6 +4,7 @@ using Adapter_pattern;
 using Adapter_pattern.Resource;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Data.OleDb;
 
 namespace Adapter.Tests
 {
@@ -24,7 +25,7 @@ namespace Adapter.Tests
         }
 
         [TestMethod]
-        public void ShouldReturnedData()
+        public void ShouldReturnedMockData()
         {
             //Arrage
             var adapter = new MockDbDataAdapter(MockDataTableFactory.GetCreateDataTable());
@@ -35,8 +36,32 @@ namespace Adapter.Tests
 
             //Assert
             list.Should().HaveCount(1, "mert 1 elem került a repoba")
-                .And
-                .Should().Equals(new Address { EMail = GlobalStrings.TestEmailAddress });
+                //.And
+                //.Should().Equals(new Address { EMail = GlobalStrings.TestEmailAddress })
+                ;
+        }
+
+        [TestMethod]
+        public void ShouldReturnedSQLData()
+        {
+            //Arrage
+            var adapter = new OleDbDataAdapter
+            {
+                SelectCommand = new OleDbCommand($"select * from {GlobalStrings.TableName}")
+            };
+            adapter.SelectCommand.Connection = new OleDbConnection(@"Provider=sqloledb;Data Source=.\punkserver;Initial Catalog=Addresses; Integrated Security = SSPI; ");
+            
+
+            AddressDBDataAdapterRepository sut = new AddressDBDataAdapterRepository(adapter);
+
+            //Act
+            var list = sut.GetAddresses();
+
+            //Assert
+            list.Should().HaveCount(1, "mert 1 elem került a repoba")
+                //.And
+                //.Should().Equals(new Address { EMail = GlobalStrings.TestEmailAddress })
+                ;
         }
     }
 }
